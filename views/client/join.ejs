@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%include ./head%>
+  </head>
+  <body>
+    <div>
+      <h1>Welcome to MarketCooly</h1>
+      <h2><%=title1%></h2>
+      아이디*
+      <input
+        type="text"
+        placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
+      /><button id="confirmId">중복확인</button>
+      <p>
+        6자 이상의 영문 혹은 영문과 숫자를 조합<br />
+        아이디 중복확인
+      </p>
+      비밀번호*
+      <input
+        type="password"
+        id="password"
+        placeholder="비밀번호를 입력해주세요"
+      /><br />
+      비밀번호확인*
+      <input
+        type="password"
+        id="password2"
+        placeholder="비밀번호를 한번 더 입력해주세요"
+      /><br />
+      이름*
+      <input
+        type="text"
+        id="name"
+        placeholder="고객님의 이름을 입력해주세요"
+      /><br />
+      이메일*
+      <input type="email" id="email" placeholder="예: cooly@marketcooly.shop" />
+      <button id="confirmEmail">이메일 중복확인</button><br />
+      휴대폰*
+      <input type="text" placeholder="숫자만 입력해주세요" /><br />
+      배송 주소
+      <button>주소 검색</button><br />
+      성별
+      <input type="radio" name="sexchk" />남자
+      <input type="radio" name="sexchk" />여자
+      <input type="radio" name="sexchk" />선택안함 <br />
+      생년월일<input type="text" placeholder="YYYY" />
+      <input type="text" placeholder="MM" />
+      <input type="text" placeholder="DD" /><br />
+      <div>
+        <h5>이용약관동의*</h5>
+        <p>
+          선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할
+          수 있습니다.
+        </p>
+        <input type="checkbox" id="checkAll" /> 전체동의 <br />
+        <input type="checkbox" name="chk" /> 이용약관 (필수) <a>약관보기 ></a
+        ><br />
+        <input type="checkbox" name="chk" /> 개인정보처리방침 (필수)
+        <a>약관보기 ></a><br />
+        <input type="checkbox" name="chk" /> 개인정보처리방침 (선택)
+        <a>약관보기 ></a><br />
+        <input type="checkbox" id="checkAll2" name="chk" />
+        무료배송, 할인쿠폰 등 혜택/정보 수신(선택)<br />
+        <input type="checkbox" name="chk" class="chk2" /> SMS
+        <input type="checkbox" name="chk" class="chk2" /> 이메일 <br />
+        <input type="checkbox" name="chk" /> 본인은 만 14세 이상입니다.(필수)
+        <br />
+      </div>
+      <div>
+        <button type="submit">가입하기</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function() {
+      event.preventDefault();
+      $("#formTerm").submit(function() {
+        if ($("input[name=chk1]").prop("checked")) {
+          $("formTerm").submit(function() {
+            return true;
+          });
+        } else {
+          alert("약관의 체크가 필요합니다.");
+          location.href = "/join";
+          return false;
+        }
+      });
+
+      //박스 전체 클릭 기능
+      $("#checkAll").click(function() {
+        if ($("#checkAll").prop("checked")) {
+          //checkAll 클릭이 되었으면
+          //input태그의 class가 chk인 태그들을 찾아서 checked옵션을 true로 정의
+          $("input[name=chk]").prop("checked", true);
+        } else {
+          //checkAll 클릭이 안되었으면
+          //input태그의 class가 chk인 태그들을 찾아서 checked옵션을 false로 정의
+          $("input[name=chk]").prop("checked", false);
+        }
+      });
+
+      $("#checkAll2").click(function() {
+        if ($("#checkAll2").prop("checked")) {
+          //checkAll 클릭이 되었으면
+          //input태그의 class가 chk인 태그들을 찾아서 checked옵션을 true로 정의
+          $("input[class=chk2]").prop("checked", true);
+        } else {
+          //checkAll 클릭이 안되었으면
+          //input태그의 class가 chk인 태그들을 찾아서 checked옵션을 false로 정의
+          $("input[class=chk2]").prop("checked", false);
+        }
+      });
+    });
+  </script>
+</html>
